@@ -1,3 +1,6 @@
+
+<img width="3670" height="1916" alt="image" src="https://github.com/user-attachments/assets/70d9b2c2-7099-448c-919d-2eae2580686e" />
+
 # Next.js App Template
 
 A production-ready fullstack Next.js starter. Clone it, configure your env vars, and start building your app — not infrastructure.
