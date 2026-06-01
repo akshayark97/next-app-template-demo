@@ -117,7 +117,7 @@ export default function Home() {
           </Button>
           <Button asChild size="lg" variant="outline">
             <a
-              href="https://github.com/akshayark97/next-app-template"
+              href="https://github.com/akshayark97/next-app-template-demo"
               target="_blank"
               rel="noopener noreferrer"
             >
