@@ -62,6 +62,8 @@ Copy `.env.example` to `.env.local`. All variables are optional — the app will
 | `RESEND_API_KEY` | Transactional email |
 | `ANTHROPIC_API_KEY` | AI features |
 
+<img width="1027" height="364" alt="Screenshot 2026-06-12 at 11 56 45 PM" src="https://github.com/user-attachments/assets/b5700ce1-f97b-45f8-be38-55f936bff982" />
+
 ## Building your app
 
 1. **Rename the domain model** — The example table is called `resources`. Rename it (or replace it) in `src/db/schema.ts` and regenerate the migration with `npm run db:generate`.
