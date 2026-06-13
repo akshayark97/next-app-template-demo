@@ -12,6 +12,10 @@
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
+/playwright/.auth/
+.test-server-pid.json
 
 # next.js
 /.next/
@@ -32,6 +36,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but always commit the example so a fresh clone can `cp .env.example .env.local`.
+!.env.example
 
 # vercel
 .vercel

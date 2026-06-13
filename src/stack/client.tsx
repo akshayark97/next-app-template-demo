@@ -13,6 +13,7 @@ export const stackClientApp = STACK_AUTH_ENABLED
         projectId: process.env.NEXT_PUBLIC_STACK_PROJECT_ID ?? "",
         publishableClientKey:
           process.env.NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY ?? "",
-      }) as import("@stackframe/stack").StackClientApp;
+        // Cast to StackClientApp<true> so StackProvider's type constraint is satisfied.
+      }) as import("@stackframe/stack").StackClientApp<true>;
     })()
   : null;

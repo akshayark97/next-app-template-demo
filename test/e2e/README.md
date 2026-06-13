@@ -90,7 +90,8 @@ Create a test user in your Stack project first, then add the credentials here.
 ```bash
 UPSTASH_REDIS_REST_URL=your-redis-url
 UPSTASH_REDIS_REST_TOKEN=your-redis-token
-ANTHROPIC_API_KEY=your-anthropic-api-key
+# AI is optional — only set a provider key if you've wired one up in src/ai/.
+# e.g. OPENAI_API_KEY / ANTHROPIC_API_KEY / GOOGLE_GENERATIVE_AI_API_KEY
 ```
 
 ### 3. Create a Test User in Stack
@@ -204,8 +205,8 @@ If Neon branch creation fails:
 
 If tests are slow or timing out:
 
-1. **AI summarization**: Article creation uses Anthropic AI which can be slow
-   - Tests use 20s timeout for article operations
+1. **AI summarization**: If you've wired up an LLM provider, AI calls can be slow
+   - Tests use a 20s timeout for operations that may trigger AI
 2. **Network speed**: Slow network can affect Stack auth and Neon API calls
 3. **Development server**: Ensure `npm run dev` starts successfully
 
