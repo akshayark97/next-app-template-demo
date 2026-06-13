@@ -1,0 +1,78 @@
+{
+  "Metadata": {
+    "title": "Next.js App Template",
+    "description": "A full-stack Next.js starter template — ready for anything."
+  },
+  "Nav": {
+    "appName": "My App",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signInDisabled": "Configure Stack Auth to enable sign-in",
+    "signUpDisabled": "Configure Stack Auth to enable sign-up"
+  },
+  "LanguageSwitcher": {
+    "label": "Change language"
+  },
+  "Home": {
+    "badge": "Starter Template",
+    "titleLead": "Fullstack Next.js",
+    "titleHighlight": "Starter Template",
+    "subtitle": "Everything you need to ship a production-grade app. Auth, database, caching, AI, email, testing, and CI — all wired up. Just start building.",
+    "getStarted": "Get started",
+    "viewOnGitHub": "View on GitHub",
+    "featuresHeading": "What's included",
+    "techStackHeading": "Tech stack",
+    "footer": "Built with Next.js · Replace this page with your actual app",
+    "features": {
+      "auth": {
+        "title": "Authentication ready",
+        "description": "Full auth flow with Stack Auth — sign up, sign in, user management, and server-side session access out of the box."
+      },
+      "database": {
+        "title": "Database + ORM",
+        "description": "Neon serverless Postgres with Drizzle ORM. Type-safe queries, migrations, and a seed script to get you running instantly."
+      },
+      "caching": {
+        "title": "Redis caching",
+        "description": "Upstash Redis wired up and ready to go. Drop-in caching layer for any data-heavy route or server action."
+      },
+      "ai": {
+        "title": "AI integration (optional)",
+        "description": "Vercel AI SDK wired in and provider-agnostic. Bring your own LLM — Anthropic, OpenAI, Google, or any supported provider — or skip it entirely."
+      },
+      "email": {
+        "title": "Transactional email",
+        "description": "Resend + React Email for sending beautiful HTML emails from server actions or API routes."
+      },
+      "testing": {
+        "title": "Testing suite",
+        "description": "Unit tests with Vitest and E2E tests with Playwright. CI workflow with Neon branch-per-PR included."
+      }
+    },
+    "categories": {
+      "framework": "Framework",
+      "database": "Database",
+      "auth": "Auth",
+      "caching": "Caching",
+      "storage": "Storage",
+      "ai": "AI (optional)",
+      "email": "Email",
+      "deployment": "Deployment",
+      "testing": "Testing",
+      "tooling": "Tooling"
+    }
+  },
+  "NotFound": {
+    "code": "404",
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.",
+    "backHome": "Back to Home"
+  },
+  "Loading": {
+    "text": "Loading…"
+  },
+  "Handler": {
+    "notConfiguredTitle": "Auth not configured",
+    "notConfiguredDescription": "Add your Stack Auth credentials to <code>.env.local</code> to enable sign-in and sign-up."
+  }
+}

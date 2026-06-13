@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,90 +8,48 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import type { Locale } from "@/i18n/routing";
 
+// Tech-stack item names are proper nouns and stay untranslated; only the
+// category label (looked up by `key`) is localized.
 const techStack = [
+  { key: "framework", items: ["Next.js 16", "React 19", "TypeScript"] },
   {
-    category: "Framework",
-    items: ["Next.js 16", "React 19", "TypeScript"],
-  },
-  {
-    category: "Database",
+    key: "database",
     items: ["Neon (Postgres)", "Drizzle ORM", "drizzle-seed"],
   },
+  { key: "auth", items: ["Stack Auth", "Role-based authz"] },
+  { key: "caching", items: ["Upstash Redis"] },
+  { key: "storage", items: ["Vercel Blob"] },
+  { key: "ai", items: ["Vercel AI SDK", "Bring your own provider"] },
+  { key: "email", items: ["Resend", "React Email"] },
   {
-    category: "Auth",
-    items: ["Stack Auth", "Role-based authz"],
-  },
-  {
-    category: "Caching",
-    items: ["Upstash Redis"],
-  },
-  {
-    category: "Storage",
-    items: ["Vercel Blob"],
-  },
-  {
-    category: "AI (optional)",
-    items: ["Vercel AI SDK", "Bring your own provider"],
-  },
-  {
-    category: "Email",
-    items: ["Resend", "React Email"],
-  },
-  {
-    category: "Deployment",
+    key: "deployment",
     items: ["Vercel", "Vercel Analytics", "Speed Insights"],
   },
-  {
-    category: "Testing",
-    items: ["Vitest", "Playwright", "Testing Library"],
-  },
-  {
-    category: "Tooling",
-    items: ["Biome", "Tailwind CSS v4", "shadcn/ui"],
-  },
-];
+  { key: "testing", items: ["Vitest", "Playwright", "Testing Library"] },
+  { key: "tooling", items: ["Biome", "Tailwind CSS v4", "shadcn/ui"] },
+] as const;
 
+// Feature copy (title/description) is localized; icon and key stay in code.
 const features = [
-  {
-    icon: "🔐",
-    title: "Authentication ready",
-    description:
-      "Full auth flow with Stack Auth — sign up, sign in, user management, and server-side session access out of the box.",
-  },
-  {
-    icon: "🗄️",
-    title: "Database + ORM",
-    description:
-      "Neon serverless Postgres with Drizzle ORM. Type-safe queries, migrations, and a seed script to get you running instantly.",
-  },
-  {
-    icon: "⚡",
-    title: "Redis caching",
-    description:
-      "Upstash Redis wired up and ready to go. Drop-in caching layer for any data-heavy route or server action.",
-  },
-  {
-    icon: "🤖",
-    title: "AI integration (optional)",
-    description:
-      "Vercel AI SDK wired in and provider-agnostic. Bring your own LLM — Anthropic, OpenAI, Google, or any supported provider — or skip it entirely.",
-  },
-  {
-    icon: "📧",
-    title: "Transactional email",
-    description:
-      "Resend + React Email for sending beautiful HTML emails from server actions or API routes.",
-  },
-  {
-    icon: "🧪",
-    title: "Testing suite",
-    description:
-      "Unit tests with Vitest and E2E tests with Playwright. CI workflow with Neon branch-per-PR included.",
-  },
-];
+  { key: "auth", icon: "🔐" },
+  { key: "database", icon: "🗄️" },
+  { key: "caching", icon: "⚡" },
+  { key: "ai", icon: "🤖" },
+  { key: "email", icon: "📧" },
+  { key: "testing", icon: "🧪" },
+] as const;
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale as Locale);
+  const t = await getTranslations("Home");
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -100,25 +58,22 @@ export default function Home() {
           variant="outline"
           className="mb-6 text-xs tracking-widest uppercase"
         >
-          Starter Template
+          {t("badge")}
         </Badge>
         <h1 className="text-5xl font-bold tracking-tight text-foreground mb-6">
-          Fullstack Next.js{" "}
+          {t("titleLead")}{" "}
           <span className="text-blue-600 dark:text-blue-400">
-            Starter Template
+            {t("titleHighlight")}
           </span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-          Everything you need to ship a production-grade app. Auth, database,
-          caching, AI, email, testing, and CI — all wired up. Just start
-          building.
+          {t("subtitle")}
         </p>
         <div className="flex items-center justify-center gap-4 flex-wrap">
           <Button asChild size="lg">
-            {/* <Link href="/handler/sign-up">Get started</Link> */}
-            <Link href="https://github.com/akshayark97/next-app-template-demo#getting-started">
-              Get started
-            </Link>
+            <a href="https://github.com/akshayark97/next-app-template-demo#getting-started">
+              {t("getStarted")}
+            </a>
           </Button>
           <Button asChild size="lg" variant="outline">
             <a
@@ -126,7 +81,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              View on GitHub
+              {t("viewOnGitHub")}
             </a>
           </Button>
         </div>
@@ -135,18 +90,20 @@ export default function Home() {
       {/* Features */}
       <section className="max-w-5xl mx-auto px-4 pb-16">
         <h2 className="text-2xl font-semibold text-foreground text-center mb-8">
-          What's included
+          {t("featuresHeading")}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f) => (
-            <Card key={f.title} className="border-border shadow-sm">
+            <Card key={f.key} className="border-border shadow-sm">
               <CardHeader className="pb-2">
                 <div className="text-2xl mb-1">{f.icon}</div>
-                <CardTitle className="text-base">{f.title}</CardTitle>
+                <CardTitle className="text-base">
+                  {t(`features.${f.key}.title`)}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-sm leading-relaxed">
-                  {f.description}
+                  {t(`features.${f.key}.description`)}
                 </CardDescription>
               </CardContent>
             </Card>
@@ -157,13 +114,13 @@ export default function Home() {
       {/* Tech Stack */}
       <section className="max-w-5xl mx-auto px-4 pb-20">
         <h2 className="text-2xl font-semibold text-foreground text-center mb-8">
-          Tech stack
+          {t("techStackHeading")}
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {techStack.map((group) => (
-            <div key={group.category}>
+            <div key={group.key}>
               <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
-                {group.category}
+                {t(`categories.${group.key}`)}
               </p>
               <div className="flex flex-col gap-1">
                 {group.items.map((item) => (
@@ -183,7 +140,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t py-8 text-center text-sm text-muted-foreground">
-        Built with Next.js · Replace this page with your actual app
+        {t("footer")}
       </footer>
     </div>
   );

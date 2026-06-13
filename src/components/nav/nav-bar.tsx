@@ -1,4 +1,6 @@
-import Link from "next/link";
+import NextLink from "next/link";
+import { getTranslations } from "next-intl/server";
+import { LanguageSwitcher } from "@/components/nav/language-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -6,25 +8,31 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { Link } from "@/i18n/navigation";
 import { STACK_AUTH_ENABLED } from "@/stack/config";
 import { getCurrentUser } from "@/stack/server";
 
 export default async function NavBar() {
   // getCurrentUser safely returns null when Stack Auth is disabled.
   const user = await getCurrentUser();
+  const t = await getTranslations("Nav");
 
   return (
     <nav className="w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        {/* Locale-aware home link (keeps the /en, /ja, … prefix). */}
         <Link
           href="/"
           className="font-bold text-xl tracking-tight text-foreground"
         >
-          My App
+          {t("appName")}
         </Link>
 
         <NavigationMenu>
           <NavigationMenuList className="flex items-center gap-2">
+            <NavigationMenuItem>
+              <LanguageSwitcher />
+            </NavigationMenuItem>
             <NavigationMenuItem>
               <ThemeToggle />
             </NavigationMenuItem>
@@ -40,12 +48,13 @@ export default async function NavBar() {
                 <>
                   <NavigationMenuItem>
                     <Button asChild variant="outline">
-                      <Link href="/handler/sign-in">Sign In</Link>
+                      {/* Stack Auth lives on a fixed, non-localized path. */}
+                      <NextLink href="/handler/sign-in">{t("signIn")}</NextLink>
                     </Button>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
                     <Button asChild>
-                      <Link href="/handler/sign-up">Sign Up</Link>
+                      <NextLink href="/handler/sign-up">{t("signUp")}</NextLink>
                     </Button>
                   </NavigationMenuItem>
                 </>
@@ -55,16 +64,12 @@ export default async function NavBar() {
               <>
                 <NavigationMenuItem>
                   <Button asChild variant="outline" disabled>
-                    <span title="Configure Stack Auth to enable sign-in">
-                      Sign In
-                    </span>
+                    <span title={t("signInDisabled")}>{t("signIn")}</span>
                   </Button>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Button asChild disabled>
-                    <span title="Configure Stack Auth to enable sign-up">
-                      Sign Up
-                    </span>
+                    <span title={t("signUpDisabled")}>{t("signUp")}</span>
                   </Button>
                 </NavigationMenuItem>
               </>
