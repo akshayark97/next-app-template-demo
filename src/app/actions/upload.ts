@@ -3,8 +3,6 @@
 import { put } from "@vercel/blob";
 import { stackServerApp } from "@/stack/server";
 
-// Server action to handle uploads (stub)
-
 export type UploadedFile = {
   url: string;
   size: number;
@@ -12,53 +10,45 @@ export type UploadedFile = {
   filename?: string;
 };
 
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+
+/**
+ * Example server action: upload a file to Vercel Blob.
+ * Requires BLOB_READ_WRITE_TOKEN and Stack Auth to be configured.
+ * Extend ALLOWED_TYPES / MAX_FILE_SIZE to match your requirements.
+ */
 export async function uploadFile(formData: FormData): Promise<UploadedFile> {
-  const user = stackServerApp.getUser();
-  if (!user) {
-    throw new Error("❌ Unauthorized");
+  if (!stackServerApp) {
+    throw new Error(
+      "Auth is not configured — set STACK_SECRET_SERVER_KEY to enable authenticated uploads.",
+    );
   }
 
-  // Basic validation constants
-  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-  const ALLOWED = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+  const user = await stackServerApp.getUser();
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
 
   const files = formData.getAll("files").filter(Boolean) as File[];
   const file = files[0];
 
-  console.log(
-    "📤 uploadFile called, received files:",
-    files.map((f) => ({ name: f.name, size: f.size, type: f.type })),
-  );
+  if (!file) throw new Error("No file provided");
+  if (!ALLOWED_TYPES.includes(file.type)) throw new Error("Invalid file type");
+  if (file.size > MAX_FILE_SIZE) throw new Error("File too large (max 10 MB)");
 
-  if (!file) {
-    throw new Error("No file provided");
-  }
+  const blob = await put(file.name, file, {
+    access: "public",
+    addRandomSuffix: true,
+  });
 
-  if (!ALLOWED.includes(file.type)) {
-    throw new Error("Invalid file type");
-  }
+  type BlobResult = { url?: string; pathname?: string };
+  const result = blob as unknown as BlobResult;
 
-  if (file.size > MAX_FILE_SIZE) {
-    throw new Error("File too large");
-  }
-
-  try {
-    const blob = await put(file.name, file, {
-      access: "public",
-      addRandomSuffix: true,
-    });
-
-    type VercelBlobResult = { url?: string; pathname?: string };
-    const blobResult = blob as unknown as VercelBlobResult;
-
-    return {
-      url: blobResult.url ?? "",
-      size: file.size,
-      type: file.type,
-      filename: blobResult.pathname ?? file.name,
-    };
-  } catch (err) {
-    console.error("❌ Vercel Blob upload error:", err);
-    throw new Error("Upload failed");
-  }
+  return {
+    url: result.url ?? "",
+    size: file.size,
+    type: file.type,
+    filename: result.pathname ?? file.name,
+  };
 }
