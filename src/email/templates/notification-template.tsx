@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/site-config";
+
 type Props = {
   name?: string;
   message: string;
@@ -36,7 +38,9 @@ const NotificationTemplate = ({
         >
           <tr>
             <td style={{ paddingBottom: 12 }}>
-              <strong style={{ fontSize: 18, color: "#0f172a" }}>My App</strong>
+              <strong style={{ fontSize: 18, color: "#0f172a" }}>
+                {siteConfig.name}
+              </strong>
             </td>
           </tr>
 
@@ -76,7 +80,7 @@ const NotificationTemplate = ({
                 )}
 
                 <p style={{ marginTop: 18, color: "#94a3b8", fontSize: 13 }}>
-                  — The My App team
+                  — The {siteConfig.name} team
                 </p>
               </div>
             </td>
@@ -85,7 +89,7 @@ const NotificationTemplate = ({
           <tr>
             <td style={{ paddingTop: 14 }}>
               <p style={{ margin: 0, color: "#94a3b8", fontSize: 12 }}>
-                You received this email from My App.
+                You received this email from {siteConfig.name}.
               </p>
             </td>
           </tr>

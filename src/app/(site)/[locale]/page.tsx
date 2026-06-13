@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { Locale } from "@/i18n/routing";
+import { siteConfig } from "@/lib/site-config";
 
 // Tech-stack item names are proper nouns and stay untranslated; only the
 // category label (looked up by `key`) is localized.
@@ -71,13 +72,13 @@ export default async function Home({
         </p>
         <div className="flex items-center justify-center gap-4 flex-wrap">
           <Button asChild size="lg">
-            <a href="https://github.com/akshayark97/next-app-template-demo#getting-started">
+            <a href={`${siteConfig.repoUrl}#getting-started`}>
               {t("getStarted")}
             </a>
           </Button>
           <Button asChild size="lg" variant="outline">
             <a
-              href="https://github.com/akshayark97/next-app-template-demo"
+              href={siteConfig.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
             >

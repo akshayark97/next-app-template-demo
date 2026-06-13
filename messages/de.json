@@ -1,10 +1,8 @@
 {
   "Metadata": {
-    "title": "Next.js App-Vorlage",
     "description": "Eine Full-Stack-Next.js-Startvorlage — bereit für alles."
   },
   "Nav": {
-    "appName": "Meine App",
     "signIn": "Anmelden",
     "signUp": "Registrieren",
     "signInDisabled": "Stack Auth konfigurieren, um die Anmeldung zu aktivieren",

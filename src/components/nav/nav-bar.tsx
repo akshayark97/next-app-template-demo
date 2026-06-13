@@ -9,6 +9,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { Link } from "@/i18n/navigation";
+import { siteConfig } from "@/lib/site-config";
 import { STACK_AUTH_ENABLED } from "@/stack/config";
 import { getCurrentUser } from "@/stack/server";
 
@@ -25,7 +26,7 @@ export default async function NavBar() {
           href="/"
           className="font-bold text-xl tracking-tight text-foreground"
         >
-          {t("appName")}
+          {siteConfig.name}
         </Link>
 
         <NavigationMenu>

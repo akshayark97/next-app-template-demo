@@ -8,6 +8,7 @@ import { geistMono, geistSans } from "@/app/fonts";
 import NavBar from "@/components/nav/nav-bar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { type Locale, routing } from "@/i18n/routing";
+import { siteConfig } from "@/lib/site-config";
 import { stackClientApp } from "@/stack/client";
 import { STACK_AUTH_ENABLED } from "@/stack/config";
 import "../../globals.css";
@@ -28,7 +29,8 @@ export async function generateMetadata({
     namespace: "Metadata",
   });
   return {
-    title: t("title"),
+    // Brand name drives the tab title (not localized); tagline is translated.
+    title: siteConfig.name,
     description: t("description"),
   };
 }

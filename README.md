@@ -25,7 +25,7 @@ A production-ready fullstack Next.js starter. Clone it, configure your env vars,
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/akshayark97/next-app-template my-app
+git clone https://github.com/your-org/your-repo my-app
 cd my-app
 
 # 2. Install dependencies
@@ -65,10 +65,10 @@ Copy `.env.example` to `.env.local`. All variables are optional — the app will
 
 ## Building your app
 
-1. **Rename the domain model** — The example table is called `resources`. Rename it (or replace it) in `src/db/schema.ts` and regenerate the migration with `npm run db:generate`.
-2. **Update the landing page** — Replace `src/app/page.tsx` with your actual home page.
-3. **Update the nav** — Edit `src/components/nav/nav-bar.tsx` to add your app name and navigation links.
-4. **Add your routes** — Create new pages under `src/app/`. Server actions live in `src/app/actions/`.
+1. **Rebrand** — Edit `src/lib/site-config.ts` to set your app `name`, `description`, and `repoUrl`. These feed the navbar, page title, landing-page buttons, and emails from one place. Also update `name` in `package.json`.
+2. **Rename the domain model** — The example table is called `resources`. Rename it (or replace it) in `src/db/schema.ts` and regenerate the migration with `npm run db:generate`.
+3. **Update the landing page** — Replace `src/app/(site)/[locale]/page.tsx` with your actual home page, and edit the copy in `messages/*.json`.
+4. **Add your routes** — Create localized pages under `src/app/(site)/[locale]/`. Server actions live in `src/app/actions/`.
 5. **Wire up AI (optional)** — The Vercel AI SDK is included but provider-agnostic. Pick a provider, install its adapter (e.g. `npm install @ai-sdk/openai`), then uncomment and configure `src/ai/summarize.ts`. Skip this entirely if your app doesn't need AI — it returns a stub by default.
 6. **Customise email** — Update `src/email/templates/notification-template.tsx` with your branding.
 

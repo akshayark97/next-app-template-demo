@@ -1,10 +1,8 @@
 {
   "Metadata": {
-    "title": "Next.js アプリテンプレート",
     "description": "あらゆる用途に対応したフルスタック Next.js スターターテンプレート。"
   },
   "Nav": {
-    "appName": "マイアプリ",
     "signIn": "ログイン",
     "signUp": "新規登録",
     "signInDisabled": "ログインを有効にするには Stack Auth を設定してください",

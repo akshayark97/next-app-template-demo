@@ -1,10 +1,8 @@
 {
   "Metadata": {
-    "title": "Next.js App Template",
     "description": "A full-stack Next.js starter template — ready for anything."
   },
   "Nav": {
-    "appName": "My App",
     "signIn": "Sign In",
     "signUp": "Sign Up",
     "signInDisabled": "Configure Stack Auth to enable sign-in",
