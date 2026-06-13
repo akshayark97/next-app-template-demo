@@ -15,6 +15,7 @@
 /playwright-report/
 /test-results/
 /playwright/.auth/
+.test-server-pid.json
 
 # next.js
 /.next/
