@@ -102,11 +102,13 @@ export default function Home() {
         >
           Starter Template
         </Badge>
-        <h1 className="text-5xl font-bold tracking-tight text-gray-900 mb-6">
+        <h1 className="text-5xl font-bold tracking-tight text-foreground mb-6">
           Fullstack Next.js{" "}
-          <span className="text-blue-600">Starter Template</span>
+          <span className="text-blue-600 dark:text-blue-400">
+            Starter Template
+          </span>
         </h1>
-        <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
           Everything you need to ship a production-grade app. Auth, database,
           caching, AI, email, testing, and CI — all wired up. Just start
           building.
@@ -132,12 +134,12 @@ export default function Home() {
 
       {/* Features */}
       <section className="max-w-5xl mx-auto px-4 pb-16">
-        <h2 className="text-2xl font-semibold text-gray-900 text-center mb-8">
+        <h2 className="text-2xl font-semibold text-foreground text-center mb-8">
           What's included
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f) => (
-            <Card key={f.title} className="border border-gray-100 shadow-sm">
+            <Card key={f.title} className="border-border shadow-sm">
               <CardHeader className="pb-2">
                 <div className="text-2xl mb-1">{f.icon}</div>
                 <CardTitle className="text-base">{f.title}</CardTitle>
@@ -154,13 +156,13 @@ export default function Home() {
 
       {/* Tech Stack */}
       <section className="max-w-5xl mx-auto px-4 pb-20">
-        <h2 className="text-2xl font-semibold text-gray-900 text-center mb-8">
+        <h2 className="text-2xl font-semibold text-foreground text-center mb-8">
           Tech stack
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {techStack.map((group) => (
             <div key={group.category}>
-              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
                 {group.category}
               </p>
               <div className="flex flex-col gap-1">
@@ -180,7 +182,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-8 text-center text-sm text-gray-400">
+      <footer className="border-t py-8 text-center text-sm text-muted-foreground">
         Built with Next.js · Replace this page with your actual app
       </footer>
     </div>

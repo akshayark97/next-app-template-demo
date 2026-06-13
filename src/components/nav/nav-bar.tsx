@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -13,17 +14,20 @@ export default async function NavBar() {
   const user = await getCurrentUser();
 
   return (
-    <nav className="w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
+    <nav className="w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link
           href="/"
-          className="font-bold text-xl tracking-tight text-gray-900"
+          className="font-bold text-xl tracking-tight text-foreground"
         >
           My App
         </Link>
 
         <NavigationMenu>
           <NavigationMenuList className="flex items-center gap-2">
+            <NavigationMenuItem>
+              <ThemeToggle />
+            </NavigationMenuItem>
             {STACK_AUTH_ENABLED ? (
               // Auth is configured — show real auth UI
               user ? (

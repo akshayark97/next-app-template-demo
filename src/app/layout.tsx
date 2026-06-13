@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import NavBar from "@/components/nav/nav-bar";
+import { ThemeProvider } from "@/components/theme-provider";
 import { stackClientApp } from "@/stack/client";
 import { STACK_AUTH_ENABLED } from "@/stack/config";
 
@@ -31,18 +32,25 @@ export default async function RootLayout({
   if (STACK_AUTH_ENABLED && stackClientApp) {
     const { StackProvider, StackTheme } = await import("@stackframe/stack");
     return (
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <StackProvider app={stackClientApp}>
-            <StackTheme>
-              <NavBar />
-              {children}
-              <Analytics />
-              <SpeedInsights />
-            </StackTheme>
-          </StackProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <StackProvider app={stackClientApp}>
+              <StackTheme>
+                <NavBar />
+                {children}
+                <Analytics />
+                <SpeedInsights />
+              </StackTheme>
+            </StackProvider>
+          </ThemeProvider>
         </body>
       </html>
     );
@@ -50,14 +58,21 @@ export default async function RootLayout({
 
   // Auth not configured — render without StackProvider.
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavBar />
-        {children}
-        <Analytics />
-        <SpeedInsights />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NavBar />
+          {children}
+          <Analytics />
+          <SpeedInsights />
+        </ThemeProvider>
       </body>
     </html>
   );
