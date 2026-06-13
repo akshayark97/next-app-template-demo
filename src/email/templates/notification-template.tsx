@@ -1,15 +1,20 @@
 type Props = {
   name?: string;
-  pageviews: number;
-  title?: string;
-  resourceUrl?: string;
+  message: string;
+  actionUrl?: string;
+  actionLabel?: string;
 };
 
 /**
- * Generic milestone email template.
+ * Generic transactional email template.
  * Swap in your app name, colours, and copy to match your brand.
  */
-const MilestoneTemplate = ({ name, pageviews, title, resourceUrl }: Props) => {
+const NotificationTemplate = ({
+  name,
+  message,
+  actionUrl,
+  actionLabel,
+}: Props) => {
   return (
     <html lang="en">
       <body
@@ -46,17 +51,16 @@ const MilestoneTemplate = ({ name, pageviews, title, resourceUrl }: Props) => {
                 }}
               >
                 <h1 style={{ margin: "0 0 8px 0", fontSize: 20 }}>
-                  🎉 Nice work{name ? `, ${name}` : ""}!
+                  Hi{name ? `, ${name}` : ""}!
                 </h1>
 
                 <p style={{ margin: "0 0 16px 0", color: "#334155" }}>
-                  Your post{title ? ` "${title}"` : ""} just hit{" "}
-                  <strong>{pageviews}</strong> views — that&apos;s a milestone.
+                  {message}
                 </p>
 
-                {resourceUrl ? (
+                {actionUrl && (
                   <a
-                    href={resourceUrl}
+                    href={actionUrl}
                     style={{
                       display: "inline-block",
                       textDecoration: "none",
@@ -67,12 +71,12 @@ const MilestoneTemplate = ({ name, pageviews, title, resourceUrl }: Props) => {
                       fontWeight: 600,
                     }}
                   >
-                    View post
+                    {actionLabel ?? "Open App"}
                   </a>
-                ) : null}
+                )}
 
                 <p style={{ marginTop: 18, color: "#94a3b8", fontSize: 13 }}>
-                  Keep it up — the team
+                  — The My App team
                 </p>
               </div>
             </td>
@@ -81,7 +85,7 @@ const MilestoneTemplate = ({ name, pageviews, title, resourceUrl }: Props) => {
           <tr>
             <td style={{ paddingTop: 14 }}>
               <p style={{ margin: 0, color: "#94a3b8", fontSize: 12 }}>
-                You received this because you authored content on My App.
+                You received this email from My App.
               </p>
             </td>
           </tr>
@@ -91,4 +95,4 @@ const MilestoneTemplate = ({ name, pageviews, title, resourceUrl }: Props) => {
   );
 };
 
-export default MilestoneTemplate;
+export default NotificationTemplate;

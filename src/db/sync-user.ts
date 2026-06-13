@@ -9,7 +9,7 @@ type StackUser = {
 
 /**
  * Ensures the Stack Auth user exists in our local users table.
- * Call this before creating articles to ensure the foreign key reference works.
+ * Call this before creating resources to ensure the foreign key reference works.
  */
 export async function ensureUserExists(stackUser: StackUser): Promise<void> {
   await db
