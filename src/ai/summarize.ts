@@ -1,16 +1,20 @@
 // ---------------------------------------------------------------------------
-// AI summarization utility — generic placeholder
+// AI summarization utility — optional, provider-agnostic placeholder
 //
-// By default this uses Anthropic via the Vercel AI SDK.
-// Swap the model/provider to use OpenAI, Google, etc.
+// This template ships the Vercel AI SDK (`ai`) but is NOT tied to any specific
+// LLM provider. Bring your own: install the provider package you want and wire
+// it up below. The Vercel AI SDK supports Anthropic, OpenAI, Google, Mistral,
+// Ollama, and many others through interchangeable provider adapters.
 //
-// Requires: ANTHROPIC_API_KEY (or your chosen provider key) in .env.local
-// Falls back to a stub summary in test environments so no API key is needed
-// for CI to pass.
+//   npm install @ai-sdk/<your-provider>   # e.g. @ai-sdk/openai, @ai-sdk/anthropic
+//
+// AI is entirely optional — the app builds and runs without any provider key.
+// Until you wire one up, this returns a deterministic stub so nothing breaks
+// (and CI passes without secrets).
 // ---------------------------------------------------------------------------
 
 // import { generateText } from "ai";
-// import { anthropic } from "@ai-sdk/anthropic";
+// import { createProvider } from "@ai-sdk/<your-provider>";
 
 function isTestEnv() {
   return (
@@ -22,7 +26,8 @@ function isTestEnv() {
 
 /**
  * Generate a short summary for a piece of content.
- * Replace the body of this function with your own AI call once you have an API key.
+ * Replace the body of this function with your own AI call once you have picked
+ * a provider and set its API key.
  */
 export async function summarizeContent(
   title: string,
@@ -36,15 +41,15 @@ export async function summarizeContent(
     throw new Error("Content is required to generate a summary.");
   }
 
-  // Example using Vercel AI SDK + Anthropic (uncomment when ready):
+  // Example using the Vercel AI SDK (uncomment and pick a provider/model):
   //
   // const { text } = await generateText({
-  //   model: anthropic("claude-haiku-4-5"),
+  //   model: provider("<your-model-id>"),
   //   system: "You are an assistant that writes concise factual summaries.",
   //   prompt: `Summarize the following in 1-2 sentences.\n\nTitle: ${title}\n\nContent:\n${content}`,
   // });
   // return text.trim();
 
-  // Placeholder until you wire up a real API key:
+  // Placeholder until you wire up a provider:
   return `Summary of "${title}".`;
 }

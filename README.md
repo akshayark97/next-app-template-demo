@@ -14,7 +14,7 @@ A production-ready fullstack Next.js starter. Clone it, configure your env vars,
 | Auth | Stack Auth |
 | Caching | Upstash Redis |
 | Storage | Vercel Blob |
-| AI | Vercel AI SDK + Anthropic |
+| AI (optional) | Vercel AI SDK (bring your own provider) |
 | Email | Resend + React Email |
 | Deployment | Vercel |
 | Testing | Vitest + Playwright |
@@ -60,7 +60,7 @@ Copy `.env.example` to `.env.local`. All variables are optional — the app will
 | `BLOB_READ_WRITE_TOKEN` | Vercel Blob uploads |
 | `BLOB_BASE_URL` | Vercel Blob image rendering |
 | `RESEND_API_KEY` | Transactional email |
-| `ANTHROPIC_API_KEY` | AI features |
+| `<PROVIDER>_API_KEY` | AI features (optional) — only if you wire up an LLM provider, e.g. `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GOOGLE_GENERATIVE_AI_API_KEY` |
 
 ## Building your app
 
@@ -68,8 +68,8 @@ Copy `.env.example` to `.env.local`. All variables are optional — the app will
 2. **Update the landing page** — Replace `src/app/page.tsx` with your actual home page.
 3. **Update the nav** — Edit `src/components/nav/nav-bar.tsx` to add your app name and navigation links.
 4. **Add your routes** — Create new pages under `src/app/`. Server actions live in `src/app/actions/`.
-5. **Wire up AI** — Uncomment and configure `src/ai/summarize.ts` (or create your own AI utility).
-6. **Customise email** — Update `src/email/templates/milestone-template.tsx` with your branding.
+5. **Wire up AI (optional)** — The Vercel AI SDK is included but provider-agnostic. Pick a provider, install its adapter (e.g. `npm install @ai-sdk/openai`), then uncomment and configure `src/ai/summarize.ts`. Skip this entirely if your app doesn't need AI — it returns a stub by default.
+6. **Customise email** — Update `src/email/templates/notification-template.tsx` with your branding.
 
 ## Scripts
 
