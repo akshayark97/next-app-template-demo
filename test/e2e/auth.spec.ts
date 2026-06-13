@@ -25,7 +25,10 @@ test.describe("Home page — unauthenticated", () => {
       "Stack Auth not configured",
     );
     await page.goto("/");
-    await page.getByRole("navigation").getByText("Sign In", { exact: true }).click();
+    await page
+      .getByRole("navigation")
+      .getByText("Sign In", { exact: true })
+      .click();
     await expect(page).toHaveURL(/handler\/sign-in/);
   });
 
@@ -35,7 +38,10 @@ test.describe("Home page — unauthenticated", () => {
       "Stack Auth not configured",
     );
     await page.goto("/");
-    await page.getByRole("navigation").getByText("Sign Up", { exact: true }).click();
+    await page
+      .getByRole("navigation")
+      .getByText("Sign Up", { exact: true })
+      .click();
     await expect(page).toHaveURL(/handler\/sign-up/);
   });
 });
