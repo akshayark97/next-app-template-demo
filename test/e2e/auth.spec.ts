@@ -14,8 +14,9 @@ test.describe("Home page — unauthenticated", () => {
 
   test("shows Sign In and Sign Up in the nav", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("text=Sign In")).toBeVisible();
-    await expect(page.locator("text=Sign Up")).toBeVisible();
+    const nav = page.getByRole("navigation");
+    await expect(nav.getByText("Sign In", { exact: true })).toBeVisible();
+    await expect(nav.getByText("Sign Up", { exact: true })).toBeVisible();
   });
 
   test("navigates to sign-in when Stack Auth is enabled", async ({ page }) => {
@@ -24,7 +25,7 @@ test.describe("Home page — unauthenticated", () => {
       "Stack Auth not configured",
     );
     await page.goto("/");
-    await page.locator("text=Sign In").click();
+    await page.getByRole("navigation").getByText("Sign In", { exact: true }).click();
     await expect(page).toHaveURL(/handler\/sign-in/);
   });
 
@@ -34,7 +35,7 @@ test.describe("Home page — unauthenticated", () => {
       "Stack Auth not configured",
     );
     await page.goto("/");
-    await page.locator("text=Sign Up").click();
+    await page.getByRole("navigation").getByText("Sign Up", { exact: true }).click();
     await expect(page).toHaveURL(/handler\/sign-up/);
   });
 });

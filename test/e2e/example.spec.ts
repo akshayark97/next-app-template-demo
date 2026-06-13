@@ -16,8 +16,9 @@ test.describe("Home page", () => {
     page,
   }) => {
     await page.goto("/");
-    await expect(page.locator("text=Sign In")).toBeVisible();
-    await expect(page.locator("text=Sign Up")).toBeVisible();
+    const nav = page.getByRole("navigation");
+    await expect(nav.getByText("Sign In", { exact: true })).toBeVisible();
+    await expect(nav.getByText("Sign Up", { exact: true })).toBeVisible();
   });
 
   test("displays the features section", async ({ page }) => {
