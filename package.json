@@ -26,7 +26,6 @@
     "test:all": "npm run test:ci"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^2.0.33",
     "@neondatabase/serverless": "^1.1.0",
     "@react-email/render": "^2.0.8",
     "@stackframe/stack": "^2.8.80",

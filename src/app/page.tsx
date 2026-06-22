@@ -31,8 +31,8 @@ const techStack = [
     items: ["Vercel Blob"],
   },
   {
-    category: "AI",
-    items: ["Vercel AI SDK", "Anthropic / OpenAI"],
+    category: "AI (optional)",
+    items: ["Vercel AI SDK", "Bring your own provider"],
   },
   {
     category: "Email",
@@ -73,9 +73,9 @@ const features = [
   },
   {
     icon: "🤖",
-    title: "AI integration",
+    title: "AI integration (optional)",
     description:
-      "Vercel AI SDK configured with Anthropic. Add AI features to any route or server action with minimal boilerplate.",
+      "Vercel AI SDK wired in and provider-agnostic. Bring your own LLM — Anthropic, OpenAI, Google, or any supported provider — or skip it entirely.",
   },
   {
     icon: "📧",
