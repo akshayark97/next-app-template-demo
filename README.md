@@ -16,6 +16,7 @@ A production-ready fullstack Next.js starter. Clone it, configure your env vars,
 | Storage | Vercel Blob |
 | AI (optional) | Vercel AI SDK (bring your own provider) |
 | Email | Resend + React Email |
+| i18n | next-intl (English, Japanese, German) |
 | Deployment | Vercel |
 | Testing | Vitest + Playwright |
 | Tooling | Biome, Tailwind CSS v4, shadcn/ui |
@@ -24,7 +25,7 @@ A production-ready fullstack Next.js starter. Clone it, configure your env vars,
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/akshayark97/next-app-template my-app
+git clone https://github.com/your-org/your-repo my-app
 cd my-app
 
 # 2. Install dependencies
@@ -64,12 +65,31 @@ Copy `.env.example` to `.env.local`. All variables are optional — the app will
 
 ## Building your app
 
-1. **Rename the domain model** — The example table is called `resources`. Rename it (or replace it) in `src/db/schema.ts` and regenerate the migration with `npm run db:generate`.
-2. **Update the landing page** — Replace `src/app/page.tsx` with your actual home page.
-3. **Update the nav** — Edit `src/components/nav/nav-bar.tsx` to add your app name and navigation links.
-4. **Add your routes** — Create new pages under `src/app/`. Server actions live in `src/app/actions/`.
+1. **Rebrand** — Edit `src/lib/site-config.ts` to set your app `name`, `description`, and `repoUrl`. These feed the navbar, page title, landing-page buttons, and emails from one place. Also update `name` in `package.json`.
+2. **Rename the domain model** — The example table is called `resources`. Rename it (or replace it) in `src/db/schema.ts` and regenerate the migration with `npm run db:generate`.
+3. **Update the landing page** — Replace `src/app/(site)/[locale]/page.tsx` with your actual home page, and edit the copy in `messages/*.json`.
+4. **Add your routes** — Create localized pages under `src/app/(site)/[locale]/`. Server actions live in `src/app/actions/`.
 5. **Wire up AI (optional)** — The Vercel AI SDK is included but provider-agnostic. Pick a provider, install its adapter (e.g. `npm install @ai-sdk/openai`), then uncomment and configure `src/ai/summarize.ts`. Skip this entirely if your app doesn't need AI — it returns a stub by default.
 6. **Customise email** — Update `src/email/templates/notification-template.tsx` with your branding.
+
+## Internationalization (i18n)
+
+Localized with [next-intl](https://next-intl.dev) using URL-based locale routing. Ships with **English (`en`)**, **Japanese (`ja`)**, and **German (`de`)** — `en` is the default. Visiting `/` redirects to the visitor's best-match locale (e.g. `/en`), and the navbar includes a language switcher.
+
+Message catalogs live in `messages/<locale>.json`, and message keys are type-checked against `messages/en.json`.
+
+**Add a new language** (e.g. French):
+
+1. Add `"fr"` to `locales` in `src/i18n/routing.ts`.
+2. Copy `messages/en.json` → `messages/fr.json` and translate the values.
+3. Add a display name in `src/i18n/locale-names.ts` (e.g. `fr: "Français"`).
+
+Routing, the language switcher, and message loading pick it up automatically.
+
+**A few conventions:**
+
+- Use `Link` / `useRouter` from `@/i18n/navigation` for localized routes (they keep the locale prefix); use plain `next/link` for non-localized paths like Stack Auth's `/handler/*`.
+- Localized pages live under `src/app/(site)/[locale]/`; the auth handler stays non-localized under `src/app/(auth)/` so Stack Auth keeps its fixed `/handler` path.
 
 ## Scripts
 
@@ -96,8 +116,11 @@ src/
   components/     # Shared UI components
   db/             # Drizzle schema, migrations, seed
   email/          # Email sending logic and React Email templates
+  i18n/           # next-intl config (routing, navigation, request, locale names)
   lib/            # Shared data-access helpers
   stack/          # Stack Auth client/server config
+  proxy.ts        # next-intl locale middleware
+messages/         # Translation catalogs (en.json, ja.json, de.json)
 test/
   unit/           # Vitest unit tests
   e2e/            # Playwright E2E tests
