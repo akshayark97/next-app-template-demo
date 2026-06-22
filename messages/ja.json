@@ -1,0 +1,76 @@
+{
+  "Metadata": {
+    "description": "あらゆる用途に対応したフルスタック Next.js スターターテンプレート。"
+  },
+  "Nav": {
+    "signIn": "ログイン",
+    "signUp": "新規登録",
+    "signInDisabled": "ログインを有効にするには Stack Auth を設定してください",
+    "signUpDisabled": "新規登録を有効にするには Stack Auth を設定してください"
+  },
+  "LanguageSwitcher": {
+    "label": "言語を変更"
+  },
+  "Home": {
+    "badge": "スターターテンプレート",
+    "titleLead": "フルスタック Next.js",
+    "titleHighlight": "スターターテンプレート",
+    "subtitle": "本番品質のアプリを出荷するために必要なものがすべて揃っています。認証、データベース、キャッシュ、AI、メール、テスト、CI — すべて配線済み。あとは作るだけ。",
+    "getStarted": "はじめる",
+    "viewOnGitHub": "GitHub で見る",
+    "featuresHeading": "含まれているもの",
+    "techStackHeading": "技術スタック",
+    "footer": "Next.js で構築 · このページを実際のアプリに置き換えてください",
+    "features": {
+      "auth": {
+        "title": "認証対応",
+        "description": "Stack Auth による完全な認証フロー — 新規登録、ログイン、ユーザー管理、サーバーサイドのセッションアクセスがすぐに使えます。"
+      },
+      "database": {
+        "title": "データベース + ORM",
+        "description": "Drizzle ORM を備えた Neon サーバーレス Postgres。型安全なクエリ、マイグレーション、シードスクリプトですぐに動かせます。"
+      },
+      "caching": {
+        "title": "Redis キャッシュ",
+        "description": "Upstash Redis が配線済みで使用可能。データ量の多いルートやサーバーアクションに差し込めるキャッシュ層です。"
+      },
+      "ai": {
+        "title": "AI 連携（任意）",
+        "description": "Vercel AI SDK を配線済みでプロバイダー非依存。Anthropic、OpenAI、Google など好きな LLM を使うことも、まったく使わないこともできます。"
+      },
+      "email": {
+        "title": "トランザクションメール",
+        "description": "Resend + React Email で、サーバーアクションや API ルートから美しい HTML メールを送信できます。"
+      },
+      "testing": {
+        "title": "テストスイート",
+        "description": "Vitest によるユニットテストと Playwright による E2E テスト。Neon の PR ごとのブランチを使った CI ワークフローも含まれています。"
+      }
+    },
+    "categories": {
+      "framework": "フレームワーク",
+      "database": "データベース",
+      "auth": "認証",
+      "caching": "キャッシュ",
+      "storage": "ストレージ",
+      "ai": "AI（任意）",
+      "email": "メール",
+      "deployment": "デプロイ",
+      "testing": "テスト",
+      "tooling": "ツール"
+    }
+  },
+  "NotFound": {
+    "code": "404",
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しません。移動または削除されたか、URL が間違っている可能性があります。",
+    "backHome": "ホームに戻る"
+  },
+  "Loading": {
+    "text": "読み込み中…"
+  },
+  "Handler": {
+    "notConfiguredTitle": "認証が未設定です",
+    "notConfiguredDescription": "ログインと新規登録を有効にするには、Stack Auth の認証情報を <code>.env.local</code> に追加してください。"
+  }
+}

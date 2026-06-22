@@ -1,0 +1,76 @@
+{
+  "Metadata": {
+    "description": "Eine Full-Stack-Next.js-Startvorlage — bereit für alles."
+  },
+  "Nav": {
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "signInDisabled": "Stack Auth konfigurieren, um die Anmeldung zu aktivieren",
+    "signUpDisabled": "Stack Auth konfigurieren, um die Registrierung zu aktivieren"
+  },
+  "LanguageSwitcher": {
+    "label": "Sprache ändern"
+  },
+  "Home": {
+    "badge": "Startvorlage",
+    "titleLead": "Fullstack Next.js",
+    "titleHighlight": "Startvorlage",
+    "subtitle": "Alles, was du brauchst, um eine produktionsreife App auszuliefern. Auth, Datenbank, Caching, KI, E-Mail, Tests und CI — alles verdrahtet. Leg einfach los.",
+    "getStarted": "Loslegen",
+    "viewOnGitHub": "Auf GitHub ansehen",
+    "featuresHeading": "Was enthalten ist",
+    "techStackHeading": "Tech-Stack",
+    "footer": "Mit Next.js erstellt · Ersetze diese Seite durch deine eigene App",
+    "features": {
+      "auth": {
+        "title": "Authentifizierung bereit",
+        "description": "Vollständiger Auth-Flow mit Stack Auth — Registrierung, Anmeldung, Benutzerverwaltung und serverseitiger Sitzungszugriff von Anfang an."
+      },
+      "database": {
+        "title": "Datenbank + ORM",
+        "description": "Neon serverless Postgres mit Drizzle ORM. Typsichere Abfragen, Migrationen und ein Seed-Skript, damit du sofort loslegen kannst."
+      },
+      "caching": {
+        "title": "Redis-Caching",
+        "description": "Upstash Redis ist verdrahtet und einsatzbereit. Eine Caching-Schicht zum Einstecken für jede datenintensive Route oder Server-Action."
+      },
+      "ai": {
+        "title": "KI-Integration (optional)",
+        "description": "Vercel AI SDK ist verdrahtet und anbieterunabhängig. Bring dein eigenes LLM mit — Anthropic, OpenAI, Google oder einen beliebigen unterstützten Anbieter — oder lass es ganz weg."
+      },
+      "email": {
+        "title": "Transaktions-E-Mails",
+        "description": "Resend + React Email zum Versenden schöner HTML-E-Mails aus Server-Actions oder API-Routen."
+      },
+      "testing": {
+        "title": "Test-Suite",
+        "description": "Unit-Tests mit Vitest und E2E-Tests mit Playwright. CI-Workflow mit Neon-Branch-pro-PR inklusive."
+      }
+    },
+    "categories": {
+      "framework": "Framework",
+      "database": "Datenbank",
+      "auth": "Auth",
+      "caching": "Caching",
+      "storage": "Speicher",
+      "ai": "KI (optional)",
+      "email": "E-Mail",
+      "deployment": "Deployment",
+      "testing": "Tests",
+      "tooling": "Tooling"
+    }
+  },
+  "NotFound": {
+    "code": "404",
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht. Sie wurde möglicherweise verschoben, gelöscht, oder du hast die falsche URL eingegeben.",
+    "backHome": "Zurück zur Startseite"
+  },
+  "Loading": {
+    "text": "Wird geladen…"
+  },
+  "Handler": {
+    "notConfiguredTitle": "Auth nicht konfiguriert",
+    "notConfiguredDescription": "Füge deine Stack-Auth-Zugangsdaten zu <code>.env.local</code> hinzu, um Anmeldung und Registrierung zu aktivieren."
+  }
+}

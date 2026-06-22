@@ -1,4 +1,5 @@
 import resend from "@/email";
+import { siteConfig } from "@/lib/site-config";
 import NotificationTemplate from "./templates/notification-template";
 
 /**
@@ -28,7 +29,7 @@ export async function sendNotificationEmail({
   }
 
   const { error } = await resend.emails.send({
-    from: "My App <onboarding@resend.dev>",
+    from: `${siteConfig.name} <onboarding@resend.dev>`,
     to,
     subject,
     react: (

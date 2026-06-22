@@ -9,7 +9,8 @@ test.describe("Home page — unauthenticated", () => {
   test("is publicly accessible", async ({ page }) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
-    await expect(page).toHaveURL("/");
+    // "/" redirects to the default locale (e.g. /en).
+    await expect(page).toHaveURL(/\/en\/?$/);
   });
 
   test("shows Sign In and Sign Up in the nav", async ({ page }) => {

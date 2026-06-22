@@ -1,9 +1,11 @@
 import { Home, Search, X } from "lucide-react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "@/i18n/navigation";
 
 export default function NotFound() {
+  const t = useTranslations("NotFound");
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <Card className="w-full max-w-md text-center">
@@ -13,21 +15,22 @@ export default function NotFound() {
             <X className="h-8 w-8 absolute -top-1 -right-1 text-destructive" />
           </div>
 
-          <h1 className="text-4xl font-bold text-foreground mb-4">404</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">
+            {t("code")}
+          </h1>
 
           <h2 className="text-xl font-semibold text-foreground mb-4">
-            Page Not Found
+            {t("title")}
           </h2>
 
           <p className="text-muted-foreground mb-8 leading-relaxed">
-            The page you&apos;re looking for doesn&apos;t exist. It might have
-            been moved, deleted, or you entered the wrong URL.
+            {t("description")}
           </p>
 
           <Link href="/">
             <Button className="w-full" size="lg">
               <Home className="h-4 w-4 mr-2" />
-              Back to Home
+              {t("backHome")}
             </Button>
           </Link>
         </CardContent>
