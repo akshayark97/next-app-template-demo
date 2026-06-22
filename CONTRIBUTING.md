@@ -7,12 +7,12 @@ Thank you for your interest in contributing to Next.js App Template! This docume
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/your-username/next-app-template.git
-   cd next-app-template
+   git clone https://github.com/your-username/next-app-template-demo.git
+   cd next-app-template-demo
    ```
 3. **Add upstream remote** to keep your fork in sync:
    ```bash
-   git remote add upstream https://github.com/akshayark97/next-app-template.git
+   git remote add upstream https://github.com/akshayark97/next-app-template-demo.git
    ```
 4. **Install dependencies**:
    ```bash
@@ -63,7 +63,7 @@ npm run test:e2e:ui  # E2E test UI
 ## Submitting Changes
 
 ### Before you start
-- Check existing [Issues](https://github.com/akshayark97/next-app-template/issues) and [PRs](https://github.com/akshayark97/next-app-template/pulls) to avoid duplicates
+- Check existing [Issues](https://github.com/akshayark97/next-app-template-demo/issues) and [PRs](https://github.com/akshayark97/next-app-template-demo/pulls) to avoid duplicates
 - For significant changes, open an issue first to discuss the approach
 
 ### Creating a PR
@@ -145,7 +145,7 @@ npm run test:e2e:ui  # E2E test UI
 
 ## Questions?
 
-- Open a [GitHub Issue](https://github.com/akshayark97/next-app-template/issues)
+- Open a [GitHub Issue](https://github.com/akshayark97/next-app-template-demo/issues)
 - Check existing discussions for similar questions
 
 ## License
