@@ -1,6 +1,6 @@
-// Types for the wiki application API
+// Shared API types — rename or extend these to match your domain model.
 
-export interface Article {
+export interface Resource {
   id: string;
   title: string;
   content: string;

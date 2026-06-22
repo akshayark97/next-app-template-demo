@@ -114,7 +114,9 @@ export default function Home() {
         <div className="flex items-center justify-center gap-4 flex-wrap">
           <Button asChild size="lg">
             {/* <Link href="/handler/sign-up">Get started</Link> */}
-            <Link href="https://github.com/akshayark97/next-app-template-demo#getting-started">Get started</Link>
+            <Link href="https://github.com/akshayark97/next-app-template-demo#getting-started">
+              Get started
+            </Link>
           </Button>
           <Button asChild size="lg" variant="outline">
             <a
